@@ -3,6 +3,7 @@ const app = express();
 const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 const config = require('./backend/config/key');
+const path = require('path');
 
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(bodyParser.json());
