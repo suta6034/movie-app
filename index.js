@@ -9,7 +9,7 @@ app.use(bodyParser.json());
 app.use(cookieParser());
 
 const mongoose = require('mongoose');
-mongoose.connect(process.env.MONGO_URI || 'mongodb+srv://jongwon123:jongwon123@cluster0.qem6e.mongodb.net/movie-app?retryWrites=true&w=majority', {
+mongoose.connect(config.mongoURI , {
     useNewUrlParser: true, useUnifiedTopology: true, useCreateIndex: true, useFindAndModify: false
 }).then (r => console.log('MongoDB Connected...'))
     .catch( err => console.log(err));
