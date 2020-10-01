@@ -3,6 +3,10 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
+  "engines": {
+    "node": "10.14",
+    "npm": "6.4"
+  },
   "scripts": {
     "backend": "NODE_ENV=development nodemon index.js",
     "start": "node index.js",
