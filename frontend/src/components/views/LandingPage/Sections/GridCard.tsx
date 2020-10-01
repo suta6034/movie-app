@@ -15,7 +15,7 @@ const GridCard: React.FC<Props> = ({item}) => {
             <Col  lg={12} md={12} xs={24} style={{height:'270px', display:'flex', justifyContent:'center'}}>
 
                 <a href={`/movie/${item.title}`}>
-                    <Card className="pokemon" style={{
+                    <Card style={{
                         // backgroundColor: `${colors[type]}`,
                         borderRadius:' 90px',
                         boxShadow:'0 3px 15px rgba(100, 100, 100, 0.5)',
@@ -28,7 +28,7 @@ const GridCard: React.FC<Props> = ({item}) => {
                         <div style={{}}>
 
                             <div className='info' style={{marginTop:'20px'}}>
-                                <div className='pokemon number' style={{
+                                <div  style={{
                                     backgroundColor: 'rgba(0, 0, 0, 0.1)',
                                     borderRadius: '10px',
                                     fontSize: '1em',
@@ -41,7 +41,7 @@ const GridCard: React.FC<Props> = ({item}) => {
                                 }}>
                                     {item.title}
                                 </div>
-                                <div className='pokemon name' style={{
+                                <div style={{
                                     fontWeight:'bolder',
                                     fontFamily:'sans-serif',
                                     fontSize:'15px',
@@ -51,7 +51,7 @@ const GridCard: React.FC<Props> = ({item}) => {
                                 }}>
                                     {item.director}
                                 </div>
-                                <div className='pokemon type'
+                                <div
                                      style={{
                                          backgroundColor: 'rgba(0, 0, 0, 0.3)',
                                          borderRadius: '10px',

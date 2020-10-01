@@ -21,12 +21,12 @@ console.log('process.env.NODE_ENV? ',process.env.NODE_ENV);
 // Serve static assets if in production
 if (process.env.NODE_ENV === "production") {
     if (process.env.NODE_ENV === "production") {
-        console.log('client[static][movieapp] call!')
+        console.log('client[static][movie-app] call!')
         // Set static folder
         // All the javascript and css files will be read and served from this folder
         app.use(express.static("frontend/build"));
         // index.html for all page routes    html or routing and navigation
-        console.log('fixed path[movieapp]!')
+        console.log('fixed path[movie-app]!')
         app.get("*", (req, res) => {
             res.sendFile(path.resolve(__dirname, "./frontend", "build", "index.html"));
         });
