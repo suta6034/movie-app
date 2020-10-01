@@ -14,6 +14,8 @@
 }
 
 .menu__logo a {
+    color: darkgrey !important;
+    /*text-decoration: none;*/
     display: inline-block;
     font-size: 20px;
     padding: 19px 20px;
@@ -37,10 +39,12 @@
 }
 
 .menu__container .menu_left {
+    margin-top:10px;
     float: left;
 }
 
 .menu__container .menu_right {
+    margin-top:10px;
     float: right;
 }
 

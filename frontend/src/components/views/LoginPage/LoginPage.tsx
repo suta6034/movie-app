@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState} from "react";
 import { withRouter } from "react-router-dom";
 import { loginUser } from "../../../_actions/user_actions";
 import { Formik } from 'formik';
@@ -6,15 +6,16 @@ import * as Yup from 'yup';
 // @ts-ignore
 import { Form, Input, Button, Checkbox, Typography } from 'antd';
 import { useDispatch } from "react-redux";
+// import Icon from "antd/es/icon";
 
 const { Title } = Typography;
 
 function LoginPage(props) {
     const dispatch = useDispatch();
-    const rememberMeChecked = localStorage.getItem("rememberMe") ? true : false;
+    const rememberMeChecked = !!localStorage.getItem("rememberMe");
 
-    const [formErrorMessage, setFormErrorMessage] = useState('')
-    const [rememberMe, setRememberMe] = useState(rememberMeChecked)
+    const [formErrorMessage, setFormErrorMessage] = useState('');
+    const [rememberMe, setRememberMe] = useState(rememberMeChecked);
 
     const handleRememberMe = () => {
         setRememberMe(!rememberMe)
@@ -47,8 +48,8 @@ function LoginPage(props) {
                         .then(response => {
                             if (response.payload.loginSuccess) {
                                 window.localStorage.setItem('userId', response.payload.userId);
-                                if (rememberMe === true) {
-                                    window.localStorage.setItem('rememberMe', values.id);
+                                if (rememberMe) {
+                                    window.localStorage.setItem('rememberMe', values.email);
                                 } else {
                                     localStorage.removeItem('rememberMe');
                                 }
@@ -58,7 +59,7 @@ function LoginPage(props) {
                             }
                         })
                         .catch(err => {
-                            setFormErrorMessage('Check out your Account or Password again')
+                            setFormErrorMessage('Check out your Account or Password again');
                             setTimeout(() => {
                                 setFormErrorMessage("")
                             }, 3000);
@@ -83,9 +84,10 @@ function LoginPage(props) {
                         <Title level={2}>Log In</Title>
                         <form onSubmit={handleSubmit} style={{ width: '350px' }}>
 
-                            <Form.Item required>
+                            <Form.Item required hasFeedback validateStatus={errors.email && touched.email ? "error" : 'success'}>
                                 <Input
                                     id="email"
+                                    // @ts-ignore
                                     // prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />}
                                     placeholder="Enter your email"
                                     type="email"
@@ -97,11 +99,11 @@ function LoginPage(props) {
                                     }
                                 />
                                 {errors.email && touched.email && (
-                                    <div className="input-feedback">{errors.email}</div>
+                                    <div className="input-feedback" style={{marginTop:'-2px'}}>{errors.email}</div>
                                 )}
                             </Form.Item>
 
-                            <Form.Item required>
+                            <Form.Item required hasFeedback validateStatus={errors.password && touched.password ? "error" : 'success'}>
                                 <Input
                                     autoComplete="false"
                                     id="password"
@@ -116,7 +118,7 @@ function LoginPage(props) {
                                     }
                                 />
                                 {errors.password && touched.password && (
-                                    <div className="input-feedback">{errors.password}</div>
+                                    <div className="input-feedback"  style={{marginTop:'-2px'}}>{errors.password}</div>
                                 )}
                             </Form.Item>
 

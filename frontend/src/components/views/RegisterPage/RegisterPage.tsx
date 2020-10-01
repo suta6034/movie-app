@@ -1,5 +1,4 @@
 import React from "react";
-import moment from "moment";
 import { Formik } from 'formik';
 import * as Yup from 'yup';
 import { registerUser } from "../../../_actions/user_actions";
@@ -64,17 +63,17 @@ function RegisterPage(props) {
                         email: values.email,
                         password: values.password,
                         name: values.name,
-                        lastname: values.lastName,
-                        image: `http://gravatar.com/avatar/${moment().unix()}?d=identicon`
+                        lastName: values.lastName,
+                        image: ''
                     };
-
+                    alert('you are successfully registered!');
                     dispatch(registerUser(dataToSubmit)).then(response => {
                         if (response.payload.success) {
                             props.history.push("/login");
                         } else {
-                            alert(response.payload.err.errmsg)
+                            alert(response.err)
                         }
-                    })
+                    });
 
                     setSubmitting(false);
                 }, 500);
@@ -94,10 +93,10 @@ function RegisterPage(props) {
                     <div className="app">
                         <h2>Sign up</h2>
                         <Form style={{ minWidth: '375px' }} {...formItemLayout}
-                              // @ts-ignore
+                            // @ts-ignore
                               onSubmit={handleSubmit} >
 
-                            <Form.Item required label="Name">
+                            <Form.Item required label="Name" hasFeedback validateStatus={errors.name && touched.name ? "error" : 'success'} >
                                 <Input
                                     id="name"
                                     placeholder="Enter your name"
@@ -110,11 +109,11 @@ function RegisterPage(props) {
                                     }
                                 />
                                 {errors.name && touched.name && (
-                                    <div className="input-feedback">{errors.name}</div>
+                                    <div className="input-feedback" style={{marginTop:'-2px'}}>{errors.name}</div>
                                 )}
                             </Form.Item>
 
-                            <Form.Item required label="Last Name">
+                            <Form.Item required label="Last Name" hasFeedback validateStatus={errors.lastName && touched.lastName ? "error" : 'success'}>
                                 <Input
                                     id="lastName"
                                     placeholder="Enter your Last Name"
@@ -127,7 +126,7 @@ function RegisterPage(props) {
                                     }
                                 />
                                 {errors.lastName && touched.lastName && (
-                                    <div className="input-feedback">{errors.lastName}</div>
+                                    <div className="input-feedback" style={{marginTop:'-2px'}}>{errors.lastName}</div>
                                 )}
                             </Form.Item>
 
@@ -144,7 +143,7 @@ function RegisterPage(props) {
                                     }
                                 />
                                 {errors.email && touched.email && (
-                                    <div className="input-feedback">{errors.email}</div>
+                                    <div className="input-feedback" style={{marginTop:'-2px'}}>{errors.email}</div>
                                 )}
                             </Form.Item>
 
@@ -162,11 +161,11 @@ function RegisterPage(props) {
                                     }
                                 />
                                 {errors.password && touched.password && (
-                                    <div className="input-feedback">{errors.password}</div>
+                                    <div className="input-feedback" style={{marginTop:'-2px'}}>{errors.password}</div>
                                 )}
                             </Form.Item>
 
-                            <Form.Item required label="Confirm" hasFeedback>
+                            <Form.Item required label="Confirm"  hasFeedback validateStatus={errors.confirmPassword && touched.confirmPassword ? "error" : 'success'}>
                                 <Input
                                     autoComplete="false"
                                     id="confirmPassword"
@@ -180,7 +179,7 @@ function RegisterPage(props) {
                                     }
                                 />
                                 {errors.confirmPassword && touched.confirmPassword && (
-                                    <div className="input-feedback">{errors.confirmPassword}</div>
+                                    <div className="input-feedback" style={{marginTop:'-2px'}}>{errors.confirmPassword}</div>
                                 )}
                             </Form.Item>
 

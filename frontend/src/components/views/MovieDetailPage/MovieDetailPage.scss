@@ -1,0 +1,27 @@
+.ant-descriptions-view{
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.9) !important;
+}
+
+table {
+  font-family: arial, sans-serif;
+  border-collapse: collapse;
+  width: 70%;
+  box-shadow: 0 3px 15px rgba(100, 100, 100, 0.9);
+}
+
+th {
+  font-size: 17px;
+  background-color: darkgray !important;
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 8px;
+}
+td{
+  text-align: center;
+  background-color: #f7f6ff !important;
+}
+
+.arrow svg{
+  width:2rem;
+  height:2rem;
+}

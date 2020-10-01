@@ -7,6 +7,7 @@ function Footer() {
             flexDirection: 'column', alignItems: 'center',
             justifyContent: 'center', fontSize:'1rem'
         }}>
+            Copy Right by Jongwon Kang
         </div>
     )
 }
